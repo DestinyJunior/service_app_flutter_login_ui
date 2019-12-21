@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './screens/create_acount_screen.dart';
+import 'package:serviceapp/screens/login_accounts_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
             width: double.infinity,
             child: Image.asset(
               "assets/bgpic.jpg",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Positioned(
@@ -86,7 +86,7 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreateAcountPage(),
+                            builder: (context) => LoginAccounts(),
                           ),
                         ),
                       ),
@@ -111,7 +111,7 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreateAcountPage(),
+                            builder: (context) => LoginAccounts(),
                           ),
                         ),
                       ),

@@ -1,32 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serviceapp/main.dart';
 
-class CreateAcountPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _CreateAcountPageState createState() => _CreateAcountPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _CreateAcountPageState extends State<CreateAcountPage>
-    with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-
+class _LoginPageState extends State<LoginPage> {
   bool isPasswordVisibe = true;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _animationController =
-  //       AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-  // }
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    print("Height : ${deviceSize.height}");
-    print("Width : ${deviceSize.width}");
-
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
@@ -37,39 +24,37 @@ class _CreateAcountPageState extends State<CreateAcountPage>
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-          height: deviceSize.height,
-          width: deviceSize.width,
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
+      body: Container(
+        width: deviceSize.width,
+        height: deviceSize.height,
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Container(
+            margin: const EdgeInsets.only(top: 20),
             child: Column(
-              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Text(
-                    "Create  account.",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold),
+                Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1.0,
                   ),
                 ),
                 SizedBox(
-                  height: deviceSize.height / 30,
+                  height: 70,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
                     textInputAction: TextInputAction.next,
                     style: TextStyle(fontSize: 18, color: Color(0xff323232)),
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'email id'.toUpperCase(),
+                      labelText: 'Phone Number'.toUpperCase(),
                       labelStyle: TextStyle(
                         color: Colors.lightBlue,
                         fontSize: 14,
@@ -120,54 +105,8 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    textInputAction: TextInputAction.next,
-                    style: TextStyle(fontSize: 18, color: Color(0xff323232)),
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      labelText: 'Address'.toUpperCase(),
-                      labelStyle: TextStyle(
-                        color: Colors.lightBlue,
-                        fontSize: 13,
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xff999999)),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey)),
-                      // contentPadding: const EdgeInsets.all(10.0),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    textInputAction: TextInputAction.next,
-                    style: TextStyle(fontSize: 18, color: Color(0xff323232)),
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                        labelText: 'Phone Number'.toUpperCase(),
-                        labelStyle: TextStyle(
-                          color: Colors.lightBlue,
-                          fontSize: 13,
-                        ),
-                        hintText: "Enter Phone Number",
-                        alignLabelWithHint: true,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey)),
-                        // contentPadding: const EdgeInsets.all(10.0),
-                        helperText:
-                            "Employers will call you on this number if  you're \n successfull. Rest assured we will never share your \n details with 3rd parties",
-                        helperStyle: TextStyle(color: Color(0xff363636))),
-                  ),
-                ),
                 SizedBox(
-                  height: deviceSize.height / 7,
+                  height: 20,
                 ),
                 SizedBox(
                   width: double.infinity,
@@ -176,7 +115,7 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                     textColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 15),
-                    child: Text('continue'.toUpperCase(),
+                    child: Text('Login'.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 14,
@@ -185,10 +124,23 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CreateAcountPage(),
+                        builder: (context) => MyHomePage(),
                       ),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "Powered by jobtize",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
                 ),
               ],
             ),
