@@ -135,27 +135,24 @@ class _ChatScreenState extends State<ChatScreen> {
               left: 0,
               right: 0,
               child: Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(1.0),
-                  child: TextField(
-                    textInputAction: TextInputAction.next,
-                    style: TextStyle(fontSize: 18, color: Color(0xff323232)),
-                    keyboardType: TextInputType.multiline,
-                    decoration: InputDecoration(
-                      hintText: "Write a message..",
-                      hintStyle: TextStyle(color: Colors.grey),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.all(Radius.circular(0.0))),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(0.0))),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.all(Radius.circular(0.0))),
-                    ),
+                child: TextField(
+                  textInputAction: TextInputAction.next,
+                  style: TextStyle(fontSize: 18, color: Color(0xff323232)),
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    hintText: "Write a message..",
+                    hintStyle: TextStyle(color: Colors.grey),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(0.0))),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(0.0))),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(0.0))),
                   ),
                 ),
               ),
