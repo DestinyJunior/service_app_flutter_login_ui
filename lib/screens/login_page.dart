@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serviceapp/main.dart';
+import 'package:serviceapp/screens/profile_order_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -124,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyHomePage(),
+                        builder: (context) => ProfileOrderPage(),
                       ),
                     ),
                   ),

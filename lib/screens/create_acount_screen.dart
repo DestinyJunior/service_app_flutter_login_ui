@@ -12,13 +12,6 @@ class _CreateAcountPageState extends State<CreateAcountPage>
 
   bool isPasswordVisibe = true;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _animationController =
-  //       AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-  // }
-
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
