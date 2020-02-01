@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serviceapp/screens/choose_service_serviceowner_registration.dart';
+
+import 'login_page.dart';
 
 class CreateAcountPage extends StatefulWidget {
+  final bool isCustomerOrServiceOwner;
+
+  CreateAcountPage({this.isCustomerOrServiceOwner});
   @override
   _CreateAcountPageState createState() => _CreateAcountPageState();
 }
@@ -45,7 +51,7 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    "Create  account.",
+                    "Create account.",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 23,
@@ -54,6 +60,27 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                 ),
                 SizedBox(
                   height: deviceSize.height / 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    textInputAction: TextInputAction.next,
+                    style: TextStyle(fontSize: 18, color: Color(0xff323232)),
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Full Name'.toUpperCase(),
+                      labelStyle: TextStyle(
+                        color: Colors.lightBlue,
+                        fontSize: 13,
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff999999)),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                      // contentPadding: const EdgeInsets.all(10.0),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -118,45 +145,28 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                   child: TextField(
                     textInputAction: TextInputAction.next,
                     style: TextStyle(fontSize: 18, color: Color(0xff323232)),
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
-                      labelText: 'Address'.toUpperCase(),
+                      labelText: 'Phone Number'.toUpperCase(),
                       labelStyle: TextStyle(
                         color: Colors.lightBlue,
                         fontSize: 13,
                       ),
+                      hintText: "Enter Phone Number",
+                      alignLabelWithHint: true,
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Color(0xff999999)),
                       ),
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey)),
                       // contentPadding: const EdgeInsets.all(10.0),
+                      helperText: widget.isCustomerOrServiceOwner
+                          ? null
+                          : "Employers/Customers will call you on this number. Rest\nassured we will never share your details with 3rd parties",
+                      helperStyle: TextStyle(
+                          color: Color(0xff363636),
+                          fontWeight: FontWeight.w300),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    textInputAction: TextInputAction.next,
-                    style: TextStyle(fontSize: 18, color: Color(0xff323232)),
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                        labelText: 'Phone Number'.toUpperCase(),
-                        labelStyle: TextStyle(
-                          color: Colors.lightBlue,
-                          fontSize: 13,
-                        ),
-                        hintText: "Enter Phone Number",
-                        alignLabelWithHint: true,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff999999)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey)),
-                        // contentPadding: const EdgeInsets.all(10.0),
-                        helperText:
-                            "Employers will call you on this number if  you're \n successfull. Rest assured we will never share your \n details with 3rd parties",
-                        helperStyle: TextStyle(color: Color(0xff363636))),
                   ),
                 ),
                 SizedBox(
@@ -169,7 +179,10 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                     textColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12, vertical: 15),
-                    child: Text('continue'.toUpperCase(),
+                    child: Text(
+                        widget.isCustomerOrServiceOwner
+                            ? "Signup as customer".toUpperCase()
+                            : 'continue'.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 14,
@@ -178,7 +191,9 @@ class _CreateAcountPageState extends State<CreateAcountPage>
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CreateAcountPage(),
+                        builder: (context) => widget.isCustomerOrServiceOwner
+                            ? LoginPage()
+                            : ChooseServiceRegistrationPage(),
                       ),
                     ),
                   ),

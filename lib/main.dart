@@ -18,7 +18,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +91,7 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginAccounts(),
+                            builder: (context) => LoginAccounts(isCustomerOrServiceOwner: false,),
                           ),
                         ),
                       ),
@@ -108,12 +113,17 @@ class MyHomePage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               letterSpacing: 0.2,
                             )),
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginAccounts(),
-                          ),
-                        ),
+                        onPressed: () {
+                          // setState(() {
+                            
+                          // });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginAccounts(isCustomerOrServiceOwner: true,),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

@@ -4,6 +4,9 @@ import 'package:serviceapp/screens/create_acount_screen.dart';
 import 'package:serviceapp/screens/login_page.dart';
 
 class LoginAccounts extends StatefulWidget {
+  final bool isCustomerOrServiceOwner;
+
+  LoginAccounts({this.isCustomerOrServiceOwner = false});
   @override
   _LoginAccountsState createState() => _LoginAccountsState();
 }
@@ -47,16 +50,34 @@ class _LoginAccountsState extends State<LoginAccounts> {
                   height: 100,
                 ),
                 _socialButtons(
-                    text: "continue with google",
-                    color: Color(0xffDB4437),
-                    icon: FontAwesomeIcons.google),
+                  text: "continue with google",
+                  color: Color(0xffDB4437),
+                  icon: FontAwesomeIcons.google,
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CreateAcountPage(
+                          isCustomerOrServiceOwner:
+                              widget.isCustomerOrServiceOwner,
+                        ),
+                      )),
+                ),
                 SizedBox(
                   height: 15,
                 ),
                 _socialButtons(
-                    text: "continue with linkedin",
-                    color: Color(0xff0e76a8),
-                    icon: FontAwesomeIcons.linkedinIn),
+                  text: "continue with linkedin",
+                  color: Color(0xff0e76a8),
+                  icon: FontAwesomeIcons.linkedinIn,
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CreateAcountPage(
+                          isCustomerOrServiceOwner:
+                              widget.isCustomerOrServiceOwner,
+                        ),
+                      )),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -71,7 +92,10 @@ class _LoginAccountsState extends State<LoginAccounts> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreateAcountPage(),
+                            builder: (context) => CreateAcountPage(
+                              isCustomerOrServiceOwner:
+                                  widget.isCustomerOrServiceOwner,
+                            ),
                           ));
                     },
                     padding: const EdgeInsets.symmetric(
@@ -154,7 +178,11 @@ class _LoginAccountsState extends State<LoginAccounts> {
   }
 
   Widget _socialButtons(
-      {String text, Color color, IconData icon, Color iconColor}) {
+      {String text,
+      Color color,
+      IconData icon,
+      Color iconColor,
+      Function onTap}) {
     return SizedBox(
       width: double.infinity,
       child: MaterialButton(
@@ -178,12 +206,7 @@ class _LoginAccountsState extends State<LoginAccounts> {
                     letterSpacing: 0.2)),
           ],
         ),
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CreateAcountPage(),
-          ),
-        ),
+        onPressed: onTap,
       ),
     );
   }

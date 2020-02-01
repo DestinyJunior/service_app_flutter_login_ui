@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:serviceapp/screens/login_page.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -14,16 +15,64 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RichText(
+              text: TextSpan(
+                  text: "Anton ",
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: Color(0xFF0641AD),
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.0),
+                  children: [
+                    TextSpan(
+                        text: "R.",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                        )),
+                  ]),
+            ),
+            Text(
+              "2m ago.",
+              style: TextStyle(
+                color: Color(0xFF0641AD),
+                fontSize: 14.0,
+                fontWeight: FontWeight.w300,
+              ),
+            )
+          ],
+        ),
         elevation: 0.0,
+        automaticallyImplyLeading: false,
         leading: Builder(
           builder: (BuildContext context) {
-            return IconButton(
-              icon: Icon(Icons.arrow_back),
-              color: Colors.blueAccent,
-              onPressed: () {
-                Navigator.of(context).pop();
+            return InkWell(
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.blueAccent,
+                      iconSize: 80,
+                      onPressed: () {},
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.black,
+                      backgroundImage: AssetImage("assets/bgpic.jpg"),
+                      maxRadius: 60,
+                    ),
+                  ],
+                ),
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
               },
-              tooltip: MaterialLocalizations.of(context).previousPageTooltip,
             );
           },
         ),
